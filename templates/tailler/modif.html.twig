@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Modifier Devis
+            
+        
+    
+{% endblock %}
+{% block body %}
+    {% block content %}
+
+        <body style="background-image: url(https://pbs.twimg.com/media/FMDVyYDWYAcpFSF?format=jpg&name=large); background-size: 100%;"></br>
+        <p style="font-family: 'Letters for Learners';color: #fffff;text-align: center;font-size: 30px;">
+            <B>
+                -------- MODIFIER UN DEVIS --------
+                                            
+                            
+            </B>
+
+        </p>
+        <div class="form-group">
+            {{ form_start(forms) }}
+        </br></br></br></br>
+    </br>
+    <table class="table" style="width: 50%;position:relative;top:-80px; left:400px">
+        <thead>
+            <tr>
+                <td>
+                    {{ form_widget(forms.devis) }}	       
+                </td>
+                <td>
+                    {{ form_label(forms.haie, 'Haie : ' ) }}
+                    {{ form_widget(forms.haie, {'attr':{'class':'form-control' }}
+                    ) }}					
+                                                    
+                                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form_label(forms.longueur, 'Longueur :' ) }}
+                    {{ form_errors(forms.longueur) }}
+                    {{ form_widget(forms.longueur, {'attr':{'class':'form-control' }}
+                    ) }}					          
+                                
+                </td>
+                <td>
+                    {{ form_label(forms.hauteur, 'Hauteur :' ) }}
+                    {{ form_errors(forms.hauteur) }}
+                    {{ form_widget(forms.hauteur, {'attr':{'class':'form-control' }}
+                    ) }}					           
+                            
+                </td>
+            </tr>
+        </thead>
+    </table>
+    <div style="position:absolute; left:940px">
+        <button class="btn btn-success">
+            {{ button_label|default('Modifier le devis ! ') }}
+        </button>
+        <a type="button" class="btn btn-danger" href="/consultation/devis">
+            Annuler
+        </a>
+    </div>
+</div>
+{{ form_end(forms) }}</body>{% endblock %}{% endblock %}

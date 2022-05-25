@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Devis
+{% endblock %}
+
+{% block body %}
+<style>
+	.example-wrapper {
+		margin: 1em auto;
+		max-width: 800px;
+		width: 95%;
+		font-size: 60px;
+	}
+
+	.example-wrapper code {
+		background: #F5F5F5;
+		padding: 2px 6px;
+		font-size: 60px;
+	}
+</style>
+{% block content %}
+
+<body style="background-image: url(https://pbs.twimg.com/media/FMDVyYDWYAcpFSF?format=jpg&name=large); background-size: 100%;">
+	</br>
+	<p style="font-family: 'Letters for Learners';color: #fffff;text-align: center;font-size: 30px">
+		<B>------------ DEVIS ------------</B>
+	</p>
+	</br>
+	<div class="col-10 offset-1 col-lg-8 offset-lg-2 div-wrapper d-flex justify-content-center align-items-center">
+		<label for="exampleFormControlSelect1" style="font-size:25px">
+
+	<B>Détail du devis</B>
+	</br>
+			Vous êtes
+			{{ choix }}
+			{% if (choix == 'Entreprise') %}
+			(vous bénéficiez d'une remise de 10%)
+			{% endif %}
+			</br></br>
+		<B>Information de la haie :</B>
+			</br>
+			Haie séléctionnée : {{ mesure }}
+		</br>
+			Longueur de la haie : {{ longueur }} m
+		</br>
+			Hauteur de la haie : {{ hauteur }} m
+		</br></br>
+	<B>Résultat du devis :</B>
+			
+			{% if (choix == 'Entreprise') %}
+			</br>
+			Vous avez obtenu une remise de
+			{{ montantRemise }} €
+			{% endif %}
+			</br>
+			Le montant total de votre devis est de
+			{{ total }}€
+		</label>
+	</div>
+</body>{% endblock %}{% endblock %}

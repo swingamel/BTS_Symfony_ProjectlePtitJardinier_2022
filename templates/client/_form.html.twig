@@ -1,0 +1,56 @@
+<div class="form-group">
+	{{ form_start(form) }}
+	<table class="table" style="width: 50%;position:relative;top:-80px; left:400px">
+		<thead>
+			<tr>
+				<td>
+					{{ form_label(form.nom, 'Nom :' ) }}
+					{{ form_widget(form.nom, {'attr':{'class':'form-control', 'placeholder' : 'Entrez le nom' }}
+					) }}
+				</td>
+				</br>
+				<td>
+					{{ form_label(form.prenom, 'Prénom :' ) }}
+					{{ form_widget(form.prenom, {'attr':{'class':'form-control', 'placeholder' : 'Entrez le prenom' }}
+					) }}
+				</td>
+				</br>
+			<tr>
+				<td>
+					{{ form_label(form.adresse, 'Adresse :' ) }}
+					{{ form_widget(form.adresse, {'attr':{'class':'form-control', 'placeholder' : 'Entrez l\'adresse' }}
+					) }}
+				</td>
+				</br>
+				<td>
+					{{ form_label(form.ville, 'Ville :' ) }}
+					{{ form_widget(form.ville, {'attr':{'class':'form-control', 'placeholder' : 'Entrez la ville' }}
+					) }}
+				</td>
+				</br>
+			<tr>
+				<td>
+					{{ form_label(form.cp, 'Code Postal :' ) }}
+					{{ form_errors(form.cp) }}
+					{{ form_widget(form.cp, {'attr':{'class':'form-control', 'placeholder' : 'Entrez le code postal' }}
+					) }}
+				</td>
+				</br>
+				<td>
+					{{ form_label(form.typeClient, 'Type de client :' ) }}
+					{{ form_widget(form.typeClient, {'attr':{'class':'form-control' }}
+					) }}
+				</td>
+		</thead>
+	</table>
+	<div style="position:absolute; left:940px"><button class="btn btn-success">
+			{{ button_label|default('Ajouter un client !') }}
+		</button>
+		<a type="button" class="btn btn-danger" href="/client">
+			Annuler
+		</a>
+	</div>
+</div>
+</br>
+{{ form_end(form) }}
+</body>

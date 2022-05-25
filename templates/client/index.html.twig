@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Tableau client
+{% endblock %}
+{% block body %}
+{% block content %}
+
+<body style="background-image: url(https://pbs.twimg.com/media/FMDVyYDWYAcpFSF?format=jpg&name=large); background-size: 100%;"></br>
+    <p style="font-family: 'Letters for Learners';color: #fffff;text-align: center;font-size: 30px">
+        <B>
+            ---------- CONSULTATION ----------
+        </B>
+        </br>
+
+    <table class="table table-hover" style="width: 55%;text-align:center; position:relative;left:350px">
+        <thead class="thead-dark">
+            {% for message in app.flashes('success') %}
+            <div class="alert alert-success" style="width: 55%;text-align:center; position:relative;left:350px">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% for message in app.flashes('edit') %}
+            <div class="alert alert-warning" style="width: 55%;text-align:center; position:relative;left:350px">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% for message in app.flashes('delete') %}
+            <div class="alert alert-danger" style="width: 55%;text-align:center; position:relative;left:350px">
+                {{ message }}
+            </div>
+            {% endfor %}
+            <tr>
+                <th>
+                    Prénom
+                </th>
+                <th>
+                    Nom
+                </th>
+                <th>
+                    Adresse
+                </th>
+                <th>
+                    Ville
+                </th>
+                <th>
+                    Cp
+                </th>
+                <th>
+                    Type de client
+                </th>
+                <th colspan="2" rowspan="2">
+                    Choix
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in clients %}
+            <tr>
+                <td>
+                    {{ client.prenom }}
+                </td>
+                <td>
+                    {{ client.nom }}
+                </td>
+                <td>
+                    {{ client.adresse }}
+                </td>
+                <td>
+                    {{ client.ville }}
+                </td>
+                <td>
+                    {{ client.cp }}
+                </td>
+                <td>
+                    {{ client.typeClient }}
+                </td>
+                <td>
+                    <a type="button" class="btn btn-warning" href="{{ path('client_edit', {'id': client.id}) }}">
+                        Modifier
+                    </a>
+                </td>
+                <td>
+                    <form method="post" action="{{ path('client_delete', {'id': client.id}) }}" onsubmit="return confirm('ATTENTION !!! Si vous supprimer ce client, vous risquez de supprimer également les devis qui dépendent de ce client.');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ client.id) }}">
+                        <button class="btn btn-danger">
+                            Supprimer
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="8">
+                    no records found
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>{% endblock %}{% endblock %}

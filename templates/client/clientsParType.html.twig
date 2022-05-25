@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+Recherche
+{% endblock %}
+{% block body %}
+{% block content %}
+
+<body style="background-image: url(https://pbs.twimg.com/media/FMDVyYDWYAcpFSF?format=jpg&name=large); background-size: 100%;">
+	</br>
+	<p style="font-family: 'Letters for Learners';color: #fffff;text-align: center;font-size: 30px">
+		<B>
+			---------- RECHERCHE DES CLIENTS ----------
+		</B>
+		</br>
+	<div style="width: 40%;position:relative; left:480px">
+	{{ render(controller(
+        'App\\Controller\\SearchController::searchBar'
+ )) }}
+	</div>
+</br>
+{% if app.request.method == 'POST' %}
+{% if articles | length == 0 %}
+</br>
+            <h4 style="text-align:center">Aucun client trouvé.</h4>
+           {% else %}
+	<table class="table table-hover" style="width: 55%;text-align:center; position:relative;left:350px">
+	<thead class="thead-dark">
+		<tr>
+			<th>
+				Nom
+			</th>
+			<th>
+				Prenom
+			</th>
+			<th>
+				Adresse
+			</th>
+			<th>
+				Ville
+			</th>
+			<th>
+				Cp
+			</th>
+			<th>
+				Type de client
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for article in articles %}
+		<tr>
+			<td>
+				{{ article.nom }}
+			</td>
+			<td>
+				{{ article.prenom }}
+			</td>
+			<td>
+				{{ article.adresse }}
+			</td>
+			<td>
+				{{ article.ville }}
+			</td>
+			<td>
+				{{ article.cp }}
+			</td>
+			<td>
+				{{ article.typeClient }}
+			</td>
+		</tr>
+
+	{% endfor %}
+{% endif %}
+{% endif %}
+</div>
+	</tbody>
+</table>
+</body>{% endblock %}{% endblock %}

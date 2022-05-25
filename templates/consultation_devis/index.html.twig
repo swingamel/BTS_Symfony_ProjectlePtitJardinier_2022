@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Tableau devis
+{% endblock %}
+{% block body %}
+{% block content %}
+
+<body style="background-image: url(https://pbs.twimg.com/media/FMDVyYDWYAcpFSF?format=jpg&name=large); background-size: 100%;"></br>
+	<p style="font-family: 'Letters for Learners';color: #fffff;text-align: center;font-size: 30px">
+		<B>
+			---------- CONSULTATION DES DEVIS ----------
+		</B>
+		</br>
+
+	<table class="table table-hover" style="width: 55%;text-align:center; position:relative;left:350px">
+		<thead class="thead-dark">
+		{% for message in app.flashes('success') %}
+		<div class="alert alert-warning" style="width: 55%;text-align:center; position:relative;left:350px">
+			{{ message }}
+		</div>
+		{% endfor %}
+		{% for message in app.flashes('delete') %}
+		<div class="alert alert-danger" style="width: 55%;text-align:center; position:relative;left:350px">
+			{{ message }}
+		</div>
+		{% endfor %}
+			<tr>
+				<th>
+					Date
+				</th>
+				<th>
+					Client
+				</th>
+				<th>
+					Haie
+				</th>
+				<th>
+					Hauteur
+				</th>
+				<th>
+					Longueur
+				</th>
+				<th colspan="2" rowspan="2">
+					Choix
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+            {% for taille in tailler %}
+			<tr>
+                <td>
+					{{ taille.devis.date|date('d/m/Y') }}
+				</td>
+				<td>
+					{{ taille.devis.client }}
+				</td>
+				<td>
+					{{ taille.haie }}
+				</td>
+				<td>
+					{{ taille.hauteur }} m
+				</td>
+				<td>
+					{{ taille.longueur }} m
+				</td>
+				<td>
+					<a type="button" class="btn btn-warning" href="{{ path('app_modif_devis_tailler', {'id': taille.id}) }}">
+						Modifier
+					</a>
+				</td>
+				<td>
+					<form method="post" action="{{ path('tailler_devis_delete', {'id': taille.id}) }}" onsubmit="return confirm('Souhaitez-vous vraiment supprimer ce devis ?');">
+						<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ taille.id) }}">
+						<button class="btn btn-danger">
+							Supprimer
+						</button>
+					</form>
+				</td>
+			</tr>
+    {% endfor %}
+		</tbody>
+	</table>
+</body>{% endblock %}{% endblock %}

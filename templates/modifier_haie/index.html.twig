@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Modifier Haie
+{% endblock %}
+{% block body %}
+{% block content %}
+
+<body style="background-image: url(https://pbs.twimg.com/media/FMDVyYDWYAcpFSF?format=jpg&name=large); background-size: 100%;">
+	</br>
+	<p style="font-family: 'Letters for Learners';color: #fffff;text-align: center;font-size: 30px;">
+		<B>-------- MODIFIER UN TYPE DE HAIE --------</B>
+
+	</p>
+	<div class="form-group">
+		{{ form_start(form) }}
+		</br></br>
+		<table class="table" style="width: 50%;position:relative;top:-80px; left:400px">
+			<thead>
+				<tr>
+					<td>
+						{{ form_label(form.code, 'Code :' ) }}
+						{{ form_widget(form.code, {'attr':{'class':'form-control', 'placeholder' : 'Entrez le code' }}
+						) }}
+
+					</td>
+				</tr>
+				</br>
+				<tr>
+					<td>
+						{{ form_label(form.nom, 'Nom : ' ) }}
+						{{ form_widget(form.nom, {'attr':{'class':'form-control', 'placeholder' : 'Entrez le nom' }}
+						) }}
+
+					</td>
+					<td>
+						{{ form_label(form.prix, 'Prix :' ) }}
+						{{ form_widget(form.prix, {'attr':{'class':'form-control', 'placeholder' : 'Entrez le prix (en €)' }}
+						) }}
+
+					</td>
+				</tr>
+				</br>
+				<tr>
+					<td>
+						{{ form_label(form.categorie, 'Sélectionner la catégorie :' ) }}
+						{{ form_widget(form.categorie, {'attr':{'class':'form-control' }}
+						) }}
+
+					</td>
+				</tr>
+			</thead>
+		</table>
+		<div style="position:absolute; left:940px"><button class="btn btn-success">{{ button_label|default('Modifier la haie ! ') }}</button>
+			<a type="button" class="btn btn-danger" href="/rechercher">Annuler
+			</a>
+		</div>
+	</div>{{ form_end(form) }}
+</body>{% endblock %}{% endblock %}

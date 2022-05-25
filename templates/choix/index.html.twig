@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Choix
+
+{% endblock %}
+
+{% block body %}
+{% block content %}
+
+<body style="background-image: url(https://pbs.twimg.com/media/FMDVyYDWYAcpFSF?format=jpg&name=large); background-size: 100%;">
+	<form action="{{ path('mesure') }}" method="post"></br>
+		<p style="font-family: 'Letters for Learners';
+                        color: #fffff;
+                        text-align: center;
+                        font-size: 30px">
+			<B>
+				------------ CHOIX ------------
+			</B>
+		</p>
+		<div class="col-10 offset-1 col-lg-8 offset-lg-2 div-wrapper d-flex justify-content-center align-items-center">
+			<div class="div-to-align">
+				<div class="example-wrapper form-check"></br></br></br>
+					<label for="exampleFormControlSelect1" style="font-size:20px">
+						Choisir votre type de client :
+					</label>
+					<select class="form-control" name="choix" id="choix">
+						{% for item in typeClient %}
+						<option>
+							{{ item.getTypeClient() }}
+						</option>
+						{% endfor %}
+					</select>
+					</br>
+					</br>
+					<div style="position:absolute; left:80px">
+						<button class="btn btn-success">Suivant -></button>
+						<a type="button" class="btn btn-danger" href="/accueil">
+							Retour
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</form>{% endblock %}{% endblock %}

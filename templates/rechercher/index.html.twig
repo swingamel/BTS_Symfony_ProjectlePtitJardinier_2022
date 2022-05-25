@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Consultation
+{% endblock %}
+
+{% block body %}
+{% block content %}
+
+<body style="background-image: url(https://pbs.twimg.com/media/FMDVyYDWYAcpFSF?format=jpg&name=large); background-size: 100%;">
+	<p style="font-family: 'Letters for Learners';color: #fffff;text-align: center;font-size: 30px"></br>
+		<B>
+			-------- CONSULTATION --------
+		</B>
+		</br>
+	<table class="table table-striped table-hover" style="width: 55%;text-align:center; position:relative;left:350px">
+		<thead class="thead-dark">
+			{% for message in app.flashes('success') %}
+			<div class="alert alert-success" style="width: 55%;text-align:center; position:relative;left:350px">
+				{{ message }}
+			</div>
+			{% endfor %}
+			<tr>
+				<th>
+					Code
+				</th>
+				<th>
+					Nom
+				</th>
+				<th>
+					Prix
+				</th>
+				<th>
+					Choix
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				{% for item in haies %}
+				<td scope="row">
+					{{ item.getCode() }}
+				</td>
+				<td>
+					{{ item.getNom() }}
+				</td>
+				<td>
+					{{ item.getPrix() }} €
+				</td>
+				<td>
+					<a href="{{ path('modifier_haie', { 'code': item.getCode() }) }}">
+						Consultation/Modification
+
+					</a>
+				</td>
+			</tr>
+		</tbody>
+		{% endfor %}
+	</table>
+</body>
+{% endblock %}{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Créer Haie
+    
+    
+{% endblock %}
+{% block body %}
+</br>
+{% block content %}
+
+    <body style="background-image: url(https://pbs.twimg.com/media/FMDVyYDWYAcpFSF?format=jpg&name=large); background-size: 100%;"></br>
+
+    <p style="font-family: 'Letters for Learners';color: #fffff;text-align: center;font-size: 30px">
+        <B>
+            -------- AJOUTER UN DEVIS --------		
+        </B>
+    </p></br>
+<div class="form-group">
+{{ form_start(forms) }}
+<table class="table" style="width: 30%;position:relative;top:-50px; left:500px">
+    <thead>
+	</br></br>
+        <tr>
+            <td>
+                {{ form_label(forms.client, 'Choisissez un client : ' ) }}
+                {{ form_widget(forms.client, {'attr':{'class':'form-control' }}
+                ) }}              
+            </td>
+        </tr>
+    </br>
+</thead></table><div style="position:absolute; left:940px">
+<button class="btn btn-success">
+    {{ button_label|default('Suivant') }}
+</button></div></div>{{ form_end(forms) }}</body>{% endblock %}{% endblock %}
